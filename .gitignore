@@ -1,0 +1,27 @@
+# node
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# env and secrets
+.env
+.env.*
+!.env.example
+
+# editor and os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# misc
+*.log
+coverage/
