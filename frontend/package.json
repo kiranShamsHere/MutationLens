@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "lucide-react": "^1.61.0",
     "molstar": "^5.13.1",
     "plotly.js-dist-min": "^4.1.2",
     "react": "^19.3.1",
