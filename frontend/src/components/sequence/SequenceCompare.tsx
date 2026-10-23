@@ -1,3 +1,4 @@
+
 import Card from '../layout/Card'
 
 type Props = {
@@ -11,11 +12,17 @@ const BLOCK = 10
 export default function SequenceCompare({ reference, variant, fullLength }: Props) {
     const diffs = new Set<number>()
     const len = Math.max(reference.length, variant.length)
-    for (let i = 0; i < len; i++) if (reference[i] !== variant[i]) diffs.add(i)
 
-    const starts = Array.from({ length: Math.ceil(len / BLOCK) }, (_, r) => r * BLOCK)
+    for (let i = 0; i < len; i++) {
+        if (reference[i] !== variant[i]) diffs.add(i)
+    }
 
-    const cell = (aa: string, diff: boolean, kind: 'ref' | 'var') =>
+    const starts = Array.from(
+        { length: Math.ceil(len / BLOCK) },
+        (_, r) => r * BLOCK
+    )
+
+    const cell = (diff: boolean, kind: 'ref' | 'var') =>
         `grid h-7 w-6 place-items-center rounded-md font-mono text-sm font-semibold transition duration-200 sm:h-8 sm:w-8 ${diff
             ? kind === 'ref'
                 ? 'scale-110 bg-brand text-brand-ink shadow-md'
@@ -44,6 +51,7 @@ export default function SequenceCompare({ reference, variant, fullLength }: Prop
                         <span className="w-7 shrink-0 text-right font-mono text-[11px] text-muted">
                             {start + 1}
                         </span>
+
                         <div className="flex flex-col gap-1">
                             {[reference, variant].map((seq, k) => (
                                 <div key={k} className="flex gap-1">
@@ -53,7 +61,10 @@ export default function SequenceCompare({ reference, variant, fullLength }: Prop
                                         .map((aa, i) => (
                                             <span
                                                 key={i}
-                                                className={cell(aa, diffs.has(start + i), k === 0 ? 'ref' : 'var')}
+                                                className={cell(
+                                                    diffs.has(start + i),
+                                                    k === 0 ? 'ref' : 'var'
+                                                )}
                                             >
                                                 {aa}
                                             </span>
