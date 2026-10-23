@@ -50,6 +50,22 @@
     --grape: #a78bfa;
 }
 
+@layer base {
+
+    button,
+    [role="button"],
+    summary,
+    select,
+    a[href],
+    label:has(input[type="checkbox"]) {
+        cursor: pointer;
+    }
+
+    button:disabled {
+        cursor: not-allowed;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -66,4 +82,66 @@ body {
     background-attachment: fixed;
     transition: background-color 0.3s ease, color 0.3s ease;
     -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.fade-up {
+    animation: fade-up 0.6s ease-out both;
+}
+
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media print {
+
+    header,
+    footer,
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+    }
 }

@@ -1,26 +1,30 @@
-export interface VariantExample {
-    id: string
-    protein: {
-        name: string
-        gene: string
-        organism: string
-        uniprotAccession: string
-        uniprotUrl: string
-        fullLength: number
-        referenceSequence: string
-    }
-    variant: {
-        label: string
-        position: number
-        ref: string
-        alt: string
-        variantSequence: string
-        sourceUrl: string
-    }
-    structure: {
-        pdbId: string | null
-        chain: string | null
-        residueMap: Record<number, number>
-        mappingVerified: boolean
-    }
+export interface Feature {
+    type: string
+    start: number
+    end: number
+    description: string
+}
+
+export interface LoadedVariant {
+    accession: string
+    name: string
+    gene: string
+    organism: string
+    length: number
+    position: number
+    ref: string
+    alt: string
+    label: string
+    reference: string
+    variant: string
+    summary: string
+    features: Feature[]
+    listedInUniProt: boolean
+}
+
+export interface StructureInput {
+    pdbId: string
+    chain: string
+    residue: number | null
+    verified: boolean
 }
