@@ -1,15 +1,12 @@
 import { ExternalLink } from 'lucide-react'
 import Card from '../layout/Card'
-import type { VariantExample } from '../../types'
+import type { LoadedVariant, StructureInput } from '../../types'
 
-type Props = { example: VariantExample }
+type Props = { data: LoadedVariant; structure: StructureInput }
 
-export default function EvidencePanel({ example }: Props) {
-    const { protein, variant, structure } = example
-
+export default function EvidencePanel({ data, structure }: Props) {
     const items = [
-        { label: `UniProt ${protein.uniprotAccession}`, hint: 'Sequence record', href: protein.uniprotUrl },
-        { label: `Variant ${variant.label}`, hint: 'Variant source', href: variant.sourceUrl },
+        { label: `UniProt ${data.accession}`, hint: 'Sequence record', href: `https://www.uniprot.org/uniprotkb/${data.accession}` },
         ...(structure.pdbId
             ? [{ label: `PDB ${structure.pdbId}`, hint: 'Structure record', href: `https://www.rcsb.org/structure/${structure.pdbId}` }]
             : []),
