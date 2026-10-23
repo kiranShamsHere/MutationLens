@@ -1,0 +1,58 @@
+{
+  "id": "hbb-e7v",
+  "protein": {
+    "name": "Hemoglobin subunit beta",
+    "gene": "HBB",
+    "organism": "Homo sapiens",
+    "uniprotAccession": "P68871",
+    "uniprotUrl": "https://www.uniprot.org/uniprotkb/P68871",
+    "fullLength": 147,
+    "referenceSequence": "MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH"
+  },
+  "variant": {
+    "label": "E6V",
+    "position": 7,
+    "ref": "E",
+    "alt": "V",
+    "variantSequence": "MVHLTPVEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH",
+    "sourceUrl": "https://www.uniprot.org/uniprotkb/P68871"
+  },
+  "structure": {
+    "pdbId": null,
+    "chain": null,
+    "residueMap": {},
+    "mappingVerified": false
+  },
+  "analysis": {
+    "method": "positional",
+    "referenceLength": 147,
+    "variantLength": 147,
+    "identical": false,
+    "substitutions": [
+      {
+        "position": 7,
+        "refAa": "E",
+        "varAa": "V",
+        "label": "E7V",
+        "properties": {
+          "classChanged": true,
+          "fromClass": "negative",
+          "toClass": "nonpolar",
+          "chargeChange": 1,
+          "hydropathyChange": 7.7,
+          "source": "calculated",
+          "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+        }
+      }
+    ],
+    "insertions": [],
+    "deletions": [],
+    "summary": {
+      "substitutionCount": 1,
+      "insertionCount": 0,
+      "deletionCount": 0,
+      "identityPercent": 99.32
+    },
+    "source": "calculated"
+  }
+}

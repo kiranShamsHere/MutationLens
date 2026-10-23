@@ -73,3 +73,11 @@ def test_apply_substitution_wrong_reference_residue():
 def test_apply_substitution_out_of_range():
     with pytest.raises(ValueError, match="beyond"):
         apply_substitution(REF, "L99W")
+
+def test_indel_result_is_json_serializable():
+    import json
+
+    var = REF[:5] + "GGG" + REF[5:]
+    result = compare_sequences(REF, var)
+    assert result["method"] == "global_alignment"
+    json.dumps(result)
