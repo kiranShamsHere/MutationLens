@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MutationLens variant example",
+  "description": "One reference/variant pair. Written by analysis/mutationlens/examples.py, read by the frontend (VariantExample type). Positions are 1-based on the reference sequence in UniProt numbering.",
+  "type": "object",
+  "required": ["id", "protein", "variant", "structure", "analysis"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+    "protein": {
+      "type": "object",
+      "required": ["name", "gene", "organism", "uniprotAccession", "uniprotUrl", "fullLength", "referenceSequence"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "gene": { "type": "string" },
+        "organism": { "type": "string" },
+        "uniprotAccession": { "type": "string" },
+        "uniprotUrl": { "type": "string", "format": "uri" },
+        "fullLength": { "type": "integer", "minimum": 1 },
+        "referenceSequence": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$" }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": ["label", "position", "ref", "alt", "variantSequence", "sourceUrl"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "description": "Label shown in the UI. May use different numbering than position." },
+        "position": { "type": "integer", "minimum": 1, "description": "1-based, UniProt numbering." },
+        "ref": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]$" },
+        "alt": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]$" },
+        "variantSequence": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$" },
+        "sourceUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "structure": {
+      "type": "object",
+      "required": ["pdbId", "chain", "residueMap", "mappingVerified"],
+      "additionalProperties": false,
+      "properties": {
+        "pdbId": { "type": ["string", "null"] },
+        "chain": { "type": ["string", "null"] },
+        "residueMap": {
+          "type": "object",
+          "description": "UniProt position (as string key) to structure residue number.",
+          "propertyNames": { "pattern": "^[0-9]+$" },
+          "additionalProperties": { "type": "integer" }
+        },
+        "mappingVerified": { "type": "boolean" }
+      },
+      "if": { "properties": { "mappingVerified": { "const": true } } },
+      "then": {
+        "properties": { "pdbId": { "type": "string" }, "chain": { "type": "string" } },
+        "description": "A verified mapping needs a PDB id and chain."
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "required": ["method", "referenceLength", "variantLength", "identical", "substitutions", "insertions", "deletions", "summary", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "method": { "enum": ["positional", "global_alignment"] },
+        "referenceLength": { "type": "integer" },
+        "variantLength": { "type": "integer" },
+        "identical": { "type": "boolean" },
+        "substitutions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["position", "refAa", "varAa", "label", "properties"],
+            "properties": {
+              "position": { "type": "integer", "minimum": 1 },
+              "refAa": { "type": "string" },
+              "varAa": { "type": "string" },
+              "label": { "type": "string" },
+              "properties": {
+                "type": "object",
+                "required": ["classChanged", "fromClass", "toClass", "chargeChange", "hydropathyChange", "source", "note"],
+                "properties": {
+                  "classChanged": { "type": "boolean" },
+                  "fromClass": { "type": "string" },
+                  "toClass": { "type": "string" },
+                  "chargeChange": { "type": "integer" },
+                  "hydropathyChange": { "type": "number" },
+                  "source": { "const": "calculated" },
+                  "note": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "insertions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["afterPosition", "sequence", "length"],
+            "properties": {
+              "afterPosition": { "type": "integer", "minimum": 0 },
+              "sequence": { "type": "string" },
+              "length": { "type": "integer", "minimum": 1 }
+            }
+          }
+        },
+        "deletions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["startPosition", "endPosition", "sequence", "length"],
+            "properties": {
+              "startPosition": { "type": "integer", "minimum": 1 },
+              "endPosition": { "type": "integer", "minimum": 1 },
+              "sequence": { "type": "string" },
+              "length": { "type": "integer", "minimum": 1 }
+            }
+          }
+        },
+        "summary": {
+          "type": "object",
+          "required": ["substitutionCount", "insertionCount", "deletionCount", "identityPercent"],
+          "properties": {
+            "substitutionCount": { "type": "integer" },
+            "insertionCount": { "type": "integer" },
+            "deletionCount": { "type": "integer" },
+            "identityPercent": { "type": "number", "minimum": 0, "maximum": 100 }
+          }
+        },
+        "source": { "const": "calculated" }
+      }
+    }
+  }
+}

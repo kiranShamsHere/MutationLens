@@ -107,6 +107,7 @@ def compare_sequences(reference: str, variant: str) -> dict[str, Any]:
         r_blocks, v_blocks = aln.aligned
         prev_r_end, prev_v_end = 0, 0
         for (rs, re_), (vs, ve) in zip(r_blocks, v_blocks):
+            rs, re_, vs, ve = int(rs), int(re_), int(vs), int(ve)  # numpy ints -> plain ints
             if rs > prev_r_end:
                 deletions.append(_deletion(ref, prev_r_end, rs))
             if vs > prev_v_end:
