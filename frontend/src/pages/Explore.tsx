@@ -5,6 +5,7 @@ import Card from '../components/layout/Card'
 import Container from '../components/layout/Container'
 import PageHeader from '../components/layout/PageHeader'
 import VariantForm from '../components/explore/VariantForm'
+import ProteinFinder from '../components/explore/ProteinFinder'
 import type { FormValues } from '../components/explore/VariantForm'
 import ExportMenu from '../components/explore/ExportMenu'
 import CopyLink from '../components/explore/CopyLink'
@@ -38,6 +39,12 @@ export default function Explore() {
         if (status === 'ready' && data) add({ acc: data.accession, v: data.label, name: data.name, gene: data.gene })
     }, [status, data, add])
 
+    const pickProtein = (accession: string) => {
+        const p = new URLSearchParams()
+        p.set('acc', accession)
+        setParams(p)
+    }
+
     const submit = (f: FormValues) => {
         const p = new URLSearchParams()
         p.set('acc', f.acc.toUpperCase())
@@ -57,6 +64,7 @@ export default function Explore() {
 
             <div className="mt-10">
                 <VariantForm key={params.toString()} acc={acc} v={v} structure={structure} onSubmit={submit} />
+                <ProteinFinder onPick={pickProtein} />
             </div>
 
             <div className="mt-8">
