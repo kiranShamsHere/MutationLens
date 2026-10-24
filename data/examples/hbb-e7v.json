@@ -18,10 +18,12 @@
     "sourceUrl": "https://www.uniprot.org/uniprotkb/P68871"
   },
   "structure": {
-    "pdbId": null,
-    "chain": null,
-    "residueMap": {},
-    "mappingVerified": false
+    "pdbId": "2HBS",
+    "chain": "A",
+    "residueMap": {
+      "7": 6
+    },
+    "mappingVerified": true
   },
   "analysis": {
     "method": "positional",
