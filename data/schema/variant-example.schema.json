@@ -37,7 +37,6 @@
     "structure": {
       "type": "object",
       "required": ["pdbId", "chain", "residueMap", "mappingVerified"],
-      "additionalProperties": false,
       "properties": {
         "pdbId": { "type": ["string", "null"] },
         "chain": { "type": ["string", "null"] },
@@ -47,7 +46,11 @@
           "propertyNames": { "pattern": "^[0-9]+$" },
           "additionalProperties": { "type": "integer" }
         },
-        "mappingVerified": { "type": "boolean" }
+        "mappingVerified": { "type": "boolean" },
+        "mappingSource": { "type": "string" },
+        "mappingCheckedOn": { "type": "string" },
+        "rcsbUrl": { "type": "string", "format": "uri" },
+        "notes": { "type": "string" }
       },
       "if": { "properties": { "mappingVerified": { "const": true } } },
       "then": {
