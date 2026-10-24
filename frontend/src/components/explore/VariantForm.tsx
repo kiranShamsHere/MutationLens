@@ -31,7 +31,7 @@ export default function VariantForm({ acc, v, structure, onSubmit }: Props) {
                 </label>
                 <label className="block">
                     <span className="mb-1.5 block text-xs font-bold uppercase tracking-widest text-muted">Variant</span>
-                    <input name="v" defaultValue={v} placeholder="E7V" required className={input} />
+                    <input name="v" defaultValue={v} placeholder="E7V" required autoFocus={Boolean(acc) && !v} className={input} />
                 </label>
                 <button
                     type="submit"
