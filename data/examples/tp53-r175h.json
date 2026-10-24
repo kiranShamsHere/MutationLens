@@ -1,0 +1,60 @@
+{
+  "id": "tp53-r175h",
+  "protein": {
+    "name": "Cellular tumor antigen p53",
+    "gene": "TP53",
+    "organism": "Homo sapiens",
+    "uniprotAccession": "P04637",
+    "uniprotUrl": "https://www.uniprot.org/uniprotkb/P04637",
+    "fullLength": 393,
+    "referenceSequence": "MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENLRKKGEPHHELPPGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPGGSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD"
+  },
+  "variant": {
+    "label": "R175H",
+    "position": 175,
+    "ref": "R",
+    "alt": "H",
+    "variantSequence": "MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRHCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENLRKKGEPHHELPPGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPGGSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD",
+    "sourceUrl": "https://www.uniprot.org/uniprotkb/P04637"
+  },
+  "structure": {
+    "pdbId": "1UOL",
+    "chain": "A",
+    "residueMap": {
+      "175": 175
+    },
+    "mappingVerified": true
+  },
+  "analysis": {
+    "method": "positional",
+    "referenceLength": 393,
+    "variantLength": 393,
+    "identical": false,
+    "substitutions": [
+      {
+        "position": 175,
+        "refAa": "R",
+        "varAa": "H",
+        "label": "R175H",
+        "properties": {
+          "classChanged": false,
+          "fromClass": "positive",
+          "toClass": "positive",
+          "chargeChange": -1,
+          "hydropathyChange": 1.3,
+          "source": "calculated",
+          "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+        }
+      }
+    ],
+    "insertions": [],
+    "deletions": [],
+    "summary": {
+      "substitutionCount": 1,
+      "insertionCount": 0,
+      "deletionCount": 0,
+      "identityPercent": 99.75
+    },
+    "source": "calculated"
+  }
+}
