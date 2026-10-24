@@ -1,0 +1,60 @@
+{
+  "id": "idh1-r132h",
+  "protein": {
+    "name": "Isocitrate dehydrogenase [NADP] cytoplasmic",
+    "gene": "IDH1",
+    "organism": "Homo sapiens",
+    "uniprotAccession": "O75874",
+    "uniprotUrl": "https://www.uniprot.org/uniprotkb/O75874",
+    "fullLength": 414,
+    "referenceSequence": "MSKKISGGSVVEMQGDEMTRIIWELIKEKLIFPYVELDLHSYDLGIENRDATNDQVTKDAAEAIKKHNVGVKCATITPDEKRVEEFKLKQMWKSPNGTIRNILGGTVFREPIICKNIPRLVPGWTKPITIGRHAHGDQYKATDFVADRAGTFKMVFTPKDGSGVKEWEVYNFPAGGVGMGMYNTDESISGFAHSCFQYAIQKKWPLYMSTKNTILKAYDGRFKDIFQEIYDKQYKSQFEAQKIWYEHRLIDDMVAQAMKSEGGFIWACKNYDGDVQSDSVAQGYGSLGMMTSVLVCPDGKTVEAEAAHGTVTRHYRMYQKGQETSTNPIASIFAWTRGLAHRAKLDNNKELAFFANALEEVSIETIEAGFMTKDLAACIKGLPNVQRSDYLNTFEFMDKLGENLKIKLAQAKL"
+  },
+  "variant": {
+    "label": "R132H",
+    "position": 132,
+    "ref": "R",
+    "alt": "H",
+    "variantSequence": "MSKKISGGSVVEMQGDEMTRIIWELIKEKLIFPYVELDLHSYDLGIENRDATNDQVTKDAAEAIKKHNVGVKCATITPDEKRVEEFKLKQMWKSPNGTIRNILGGTVFREPIICKNIPRLVPGWTKPITIGKHAHGDQYKATDFVADRAGTFKMVFTPKDGSGVKEWEVYNFPAGGVGMGMYNTDESISGFAHSCFQYAIQKKWPLYMSTKNTILKAYDGRFKDIFQEIYDKQYKSQFEAQKIWYEHRLIDDMVAQAMKSEGGFIWACKNYDGDVQSDSVAQGYGSLGMMTSVLVCPDGKTVEAEAAHGTVTRHYRMYQKGQETSTNPIASIFAWTRGLAHRAKLDNNKELAFFANALEEVSIETIEAGFMTKDLAACIKGLPNVQRSDYLNTFEFMDKLGENLKIKLAQAKL",
+    "sourceUrl": "https://www.uniprot.org/uniprotkb/O75874"
+  },
+  "structure": {
+    "pdbId": "3INW",
+    "chain": "A",
+    "residueMap": {
+      "132": 132
+    },
+    "mappingVerified": true
+  },
+  "analysis": {
+    "method": "positional",
+    "referenceLength": 414,
+    "variantLength": 414,
+    "identical": false,
+    "substitutions": [
+      {
+        "position": 132,
+        "refAa": "R",
+        "varAa": "H",
+        "label": "R132H",
+        "properties": {
+          "classChanged": false,
+          "fromClass": "positive",
+          "toClass": "positive",
+          "chargeChange": -1,
+          "hydropathyChange": 1.3,
+          "source": "calculated",
+          "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+        }
+      }
+    ],
+    "insertions": [],
+    "deletions": [],
+    "summary": {
+      "substitutionCount": 1,
+      "insertionCount": 0,
+      "deletionCount": 0,
+      "identityPercent": 99.76
+    },
+    "source": "calculated"
+  }
+}
