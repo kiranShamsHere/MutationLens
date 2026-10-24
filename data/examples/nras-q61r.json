@@ -1,0 +1,60 @@
+{
+  "id": "nras-q61r",
+  "protein": {
+    "name": "GTPase NRas",
+    "gene": "NRAS",
+    "organism": "Homo sapiens",
+    "uniprotAccession": "P01111",
+    "uniprotUrl": "https://www.uniprot.org/uniprotkb/P01111",
+    "fullLength": 189,
+    "referenceSequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNSKSFADINLYREQIKRVKDSDDVPMVLVGNKCDLPTRTVDTKQAHELAKSYGIPFIETSAKTRQGVEDAFYTLVREIRQYRMKKLNSSDDGTQGCMGLPCVVM"
+  },
+  "variant": {
+    "label": "Q61R",
+    "position": 61,
+    "ref": "Q",
+    "alt": "R",
+    "variantSequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGREEYSAMRDQYMRTGEGFLCVFAINNSKSFADINLYREQIKRVKDSDDVPMVLVGNKCDLPTRTVDTKQAHELAKSYGIPFIETSAKTRQGVEDAFYTLVREIRQYRMKKLNSSDDGTQGCMGLPCVVM",
+    "sourceUrl": "https://www.uniprot.org/uniprotkb/P01111"
+  },
+  "structure": {
+    "pdbId": "6ZIZ",
+    "chain": "A",
+    "residueMap": {
+      "61": 61
+    },
+    "mappingVerified": true
+  },
+  "analysis": {
+    "method": "positional",
+    "referenceLength": 189,
+    "variantLength": 189,
+    "identical": false,
+    "substitutions": [
+      {
+        "position": 61,
+        "refAa": "Q",
+        "varAa": "R",
+        "label": "Q61R",
+        "properties": {
+          "classChanged": true,
+          "fromClass": "polar",
+          "toClass": "positive",
+          "chargeChange": 1,
+          "hydropathyChange": -1.0,
+          "source": "calculated",
+          "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+        }
+      }
+    ],
+    "insertions": [],
+    "deletions": [],
+    "summary": {
+      "substitutionCount": 1,
+      "insertionCount": 0,
+      "deletionCount": 0,
+      "identityPercent": 99.47
+    },
+    "source": "calculated"
+  }
+}
