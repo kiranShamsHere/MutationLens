@@ -35,7 +35,7 @@ export default function ExportMenu({ data, structure }: Props) {
                 <ChevronDown size={14} className={`transition duration-200 ${open ? 'rotate-180' : ''}`} />
             </button>
             <div
-                className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl border border-line bg-surface p-1.5 shadow-xl transition duration-200 ${open ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'
+                className={`absolute left-0 z-10 mt-2 w-56 max-w-[calc(100vw-2.5rem)] origin-top-left rounded-2xl border border-line bg-surface p-1.5 shadow-xl transition duration-200 sm:left-auto sm:right-0 sm:origin-top-right ${open ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'
                     }`}
             >
                 {items.map((it) => (
@@ -46,7 +46,7 @@ export default function ExportMenu({ data, structure }: Props) {
                             it.run()
                             setOpen(false)
                         }}
-                        className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition duration-150 hover:bg-soft"
+                        className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-sm font-semibold transition duration-150 hover:bg-soft"
                     >
                         {it.label}
                         <span className="font-mono text-xs text-muted">{it.hint}</span>
