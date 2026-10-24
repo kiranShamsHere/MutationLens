@@ -51,6 +51,10 @@
 }
 
 @layer base {
+    html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+    }
 
     button,
     [role="button"],
@@ -64,15 +68,17 @@
     button:disabled {
         cursor: not-allowed;
     }
-}
 
-html {
-    scroll-behavior: smooth;
+    /* lets grid items shrink instead of stretching the page on small screens */
+    .grid>* {
+        min-width: 0;
+    }
 }
 
 body {
     margin: 0;
     min-height: 100vh;
+    overflow-x: clip;
     font-family: var(--font-sans);
     color: var(--ink);
     background-color: var(--bg);
@@ -82,6 +88,22 @@ body {
     background-attachment: fixed;
     transition: background-color 0.3s ease, color 0.3s ease;
     -webkit-font-smoothing: antialiased;
+}
+
+/* fluid text: scales with the screen width */
+.fluid-hero {
+    font-size: clamp(2.15rem, 9.5vw, 3.75rem);
+    line-height: 1.05;
+}
+
+.fluid-h1 {
+    font-size: clamp(1.85rem, 7vw, 3rem);
+    line-height: 1.1;
+}
+
+.fluid-h2 {
+    font-size: clamp(1.5rem, 5vw, 1.875rem);
+    line-height: 1.2;
 }
 
 @keyframes fade-up {
