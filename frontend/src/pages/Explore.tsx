@@ -6,6 +6,7 @@ import Container from '../components/layout/Container'
 import PageHeader from '../components/layout/PageHeader'
 import VariantForm from '../components/explore/VariantForm'
 import ProteinFinder from '../components/explore/ProteinFinder'
+import KnownVariants from '../components/explore/KnownVariants'
 import type { FormValues } from '../components/explore/VariantForm'
 import ExportMenu from '../components/explore/ExportMenu'
 import CopyLink from '../components/explore/CopyLink'
@@ -39,6 +40,13 @@ export default function Explore() {
         if (status === 'ready' && data) add({ acc: data.accession, v: data.label, name: data.name, gene: data.gene })
     }, [status, data, add])
 
+    const pickVariant = (variant: string) => {
+        const p = new URLSearchParams()
+        p.set('acc', acc)
+        p.set('v', variant)
+        setParams(p)
+    }
+
     const pickProtein = (accession: string) => {
         const p = new URLSearchParams()
         p.set('acc', accession)
@@ -68,6 +76,7 @@ export default function Explore() {
             </div>
 
             <div className="mt-8">
+                {status === 'idle' && acc && <KnownVariants key={acc} acc={acc} onPick={pickVariant} />}
                 {status === 'idle' && (
                     <Card title="Start here" className="fade-up">
                         <p className="mb-5 text-sm text-muted">Pick an example, or type your own above.</p>
