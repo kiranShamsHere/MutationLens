@@ -10,7 +10,9 @@
     "referenceSequence": "MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH"
   },
   "variant": {
-    "label": "E6V",
+    "label": "E7V",
+    "legacyLabel": "E6V",
+    "numberingNote": "E6V is the mature protein numbering. E7V is the UniProt position.",
     "position": 7,
     "ref": "E",
     "alt": "V",
@@ -23,7 +25,10 @@
     "residueMap": {
       "7": 6
     },
-    "mappingVerified": true
+    "mappingVerified": true,
+    "mappingSource": "PDBe SIFTS",
+    "mappingCheckedOn": "2026-10-25",
+    "rcsbUrl": "https://www.rcsb.org/structure/2HBS"
   },
   "analysis": {
     "method": "positional",
