@@ -78,7 +78,7 @@ export default function Home() {
                         ))}
                     </div>
                     <div className="mt-5 flex flex-wrap gap-2 text-xs font-bold sm:mt-6">
-                        <span className="rounded-full bg-sun/20 px-4 py-2">Acidic to Nonpolar</span>
+                        <span className="rounded-full bg-sun/20 px-4 py-2">Negative to Nonpolar</span>
                         <span className="rounded-full bg-grape/20 px-4 py-2">Water score +7.7</span>
                     </div>
                 </div>
