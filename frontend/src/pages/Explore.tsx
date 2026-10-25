@@ -19,7 +19,9 @@ import HydropathyChart from '../components/charts/HydropathyChart'
 import EvidencePanel from '../components/evidence/EvidencePanel'
 import { AMINO_ACIDS, signed } from '../lib/aminoAcids'
 import { EXAMPLES, exploreLink } from '../lib/examples'
+import { curatedStructure } from '../lib/structures'
 import { useVariant } from '../hooks/useVariant'
+import { useAlphaFold } from '../hooks/useAlphaFold'
 import { useHistory } from '../hooks/useHistory'
 import type { StructureInput } from '../types'
 
@@ -27,13 +29,16 @@ export default function Explore() {
     const [params, setParams] = useSearchParams()
     const acc = params.get('acc') ?? ''
     const v = params.get('v') ?? ''
-    const structure: StructureInput = {
+    const urlStructure: StructureInput = {
         pdbId: (params.get('pdb') ?? '').toUpperCase(),
         chain: params.get('chain') ?? '',
         residue: Number(params.get('res')) || null,
         verified: params.get('ok') === '1',
     }
+    const baseStructure: StructureInput = urlStructure.pdbId ? urlStructure : (curatedStructure(acc, v) ?? urlStructure)
     const { status, data, error, retry } = useVariant(acc, v)
+    const predicted = useAlphaFold(data, !baseStructure.pdbId)
+    const structure: StructureInput = baseStructure.pdbId ? baseStructure : (predicted ?? baseStructure)
     const { items, add, clear } = useHistory()
 
     useEffect(() => {
@@ -71,7 +76,7 @@ export default function Explore() {
             </PageHeader>
 
             <div className="mt-10">
-                <VariantForm key={params.toString()} acc={acc} v={v} structure={structure} onSubmit={submit} />
+                <VariantForm key={params.toString()} acc={acc} v={v} structure={urlStructure} onSubmit={submit} />
                 <ProteinFinder onPick={pickProtein} />
             </div>
 

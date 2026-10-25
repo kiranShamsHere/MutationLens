@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ShieldCheck, TriangleAlert } from 'lucide-react'
+import { Info, ShieldCheck, TriangleAlert } from 'lucide-react'
 import 'molstar/build/viewer/molstar.css'
 import Card from '../layout/Card'
 import type { StructureInput } from '../../types'
@@ -30,7 +30,7 @@ async function focusResidue(plugin: any, chain: string, residue: number) {
 export default function StructureViewer({ structure, label }: Props) {
     const host = useRef<HTMLDivElement>(null)
     const [state, setState] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
-    const { pdbId, chain, residue, verified } = structure
+    const { pdbId, chain, residue, verified, modelUrl, kind } = structure
     const highlight = Boolean(pdbId && chain && residue && verified)
     const activeState = !pdbId ? 'idle' : state
 
@@ -64,7 +64,7 @@ export default function StructureViewer({ structure, label }: Props) {
                         return
                     }
                     viewer = v
-                    await v.loadPdb(pdbId)
+                    await (modelUrl ? v.loadStructureFromUrl(modelUrl, 'mmcif', false) : v.loadPdb(pdbId))
                     if (highlight && residue) await focusResidue(v.plugin, chain, residue)
                     if (!disposed) setState('ready')
                 } catch (e) {
@@ -76,7 +76,7 @@ export default function StructureViewer({ structure, label }: Props) {
             disposed = true
             viewer?.plugin.dispose()
         }
-    }, [pdbId, chain, residue, highlight])
+    }, [pdbId, chain, residue, highlight, modelUrl])
 
     return (
         <Card title="3D structure" tag={pdbId || 'No structure linked'} className="flex min-h-[420px] flex-col">
@@ -111,7 +111,7 @@ export default function StructureViewer({ structure, label }: Props) {
             <div className="mt-4">
                 {highlight ? (
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/15 px-3 py-1.5 text-xs font-bold text-link">
-                        <ShieldCheck size={14} /> Mapping verified, residue {residue} on chain {chain} is highlighted
+                        {kind === 'predicted' ? (<><Info size={14} /> Predicted model (AlphaFold), residue {residue} is highlighted. This is a prediction, not an experiment.</>) : (<><ShieldCheck size={14} /> Mapping verified, residue {residue} on chain {chain} is highlighted{structure.source && ` · ${structure.source}`}</>)}
                     </span>
                 ) : (
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-sun/20 px-3 py-1.5 text-xs font-bold text-ink">

@@ -1,0 +1,110 @@
+{
+  "O60674|V617F": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "3KRR",
+    "rcsbUrl": "https://www.rcsb.org/structure/3KRR",
+    "residue": 617,
+    "source": null,
+    "verified": false
+  },
+  "O75874|R132H": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "3INW",
+    "rcsbUrl": "https://www.rcsb.org/structure/3INW",
+    "residue": 132,
+    "source": null,
+    "verified": false
+  },
+  "P00533|L858R": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "2ITV",
+    "rcsbUrl": "https://www.rcsb.org/structure/2ITV",
+    "residue": 858,
+    "source": null,
+    "verified": false
+  },
+  "P01111|Q61R": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "6ZIZ",
+    "rcsbUrl": "https://www.rcsb.org/structure/6ZIZ",
+    "residue": 61,
+    "source": null,
+    "verified": false
+  },
+  "P01112|G12V": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "2Q21",
+    "rcsbUrl": "https://www.rcsb.org/structure/2Q21",
+    "residue": 12,
+    "source": null,
+    "verified": false
+  },
+  "P01116|G12D": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "4DSO",
+    "rcsbUrl": "https://www.rcsb.org/structure/4DSO",
+    "residue": 12,
+    "source": null,
+    "verified": false
+  },
+  "P04637|R175H": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "1UOL",
+    "rcsbUrl": "https://www.rcsb.org/structure/1UOL",
+    "residue": 175,
+    "source": null,
+    "verified": false
+  },
+  "P13569|G551D": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "6O2P",
+    "rcsbUrl": "https://www.rcsb.org/structure/6O2P",
+    "residue": 551,
+    "source": null,
+    "verified": false
+  },
+  "P15056|V600E": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "4XV2",
+    "rcsbUrl": "https://www.rcsb.org/structure/4XV2",
+    "residue": 600,
+    "source": null,
+    "verified": false
+  },
+  "P22607|G380R": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "4K33",
+    "rcsbUrl": "https://www.rcsb.org/structure/4K33",
+    "residue": 380,
+    "source": null,
+    "verified": false
+  },
+  "P42336|H1047R": {
+    "chain": "A",
+    "checkedOn": null,
+    "pdbId": "3HHM",
+    "rcsbUrl": "https://www.rcsb.org/structure/3HHM",
+    "residue": 1047,
+    "source": null,
+    "verified": false
+  },
+  "P68871|E7V": {
+    "chain": "A",
+    "checkedOn": "2026-10-25",
+    "pdbId": "2HBS",
+    "rcsbUrl": "https://www.rcsb.org/structure/2HBS",
+    "residue": 6,
+    "source": "PDBe SIFTS",
+    "verified": true
+  }
+}

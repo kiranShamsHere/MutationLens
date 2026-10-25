@@ -30,7 +30,7 @@ export function explain(data: LoadedVariant, structureVerified: boolean) {
         ['Hydropathy (Kyte and Doolittle)', `${signed(r.kd)} to ${signed(a.kd)}, change ${signed(delta)}`],
         ['Position in UniProt record', `${data.position} of ${data.length}`],
         ['Listed as natural variant in UniProt', data.listedInUniProt ? 'Yes' : 'Not found in this entry'],
-        ['3D mapping', structureVerified ? 'Confirmed by you' : 'Not confirmed'],
+        ['3D mapping', structureVerified ? 'Confirmed' : 'Not confirmed'],
     ]
 
     return { simple, technical }
