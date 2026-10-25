@@ -1,0 +1,703 @@
+[
+  {
+    "id": "braf-v600e",
+    "protein": {
+      "name": "Serine/threonine-protein kinase B-raf",
+      "gene": "BRAF",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P15056",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P15056",
+      "fullLength": 766
+    },
+    "variant": {
+      "label": "V600E",
+      "position": 600,
+      "ref": "V",
+      "alt": "E",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P15056"
+    },
+    "structure": {
+      "pdbId": "4XV2",
+      "chain": "A",
+      "residueMap": {
+        "600": 600
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 766,
+      "variantLength": 766,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 600,
+          "refAa": "V",
+          "varAa": "E",
+          "label": "V600E",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "nonpolar",
+            "toClass": "negative",
+            "chargeChange": -1,
+            "hydropathyChange": -7.7,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.87
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "cftr-g551d",
+    "protein": {
+      "name": "Cystic fibrosis transmembrane conductance regulator",
+      "gene": "CFTR",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P13569",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P13569",
+      "fullLength": 1480
+    },
+    "variant": {
+      "label": "G551D",
+      "position": 551,
+      "ref": "G",
+      "alt": "D",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P13569"
+    },
+    "structure": {
+      "pdbId": "6O2P",
+      "chain": "A",
+      "residueMap": {
+        "551": 551
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 1480,
+      "variantLength": 1480,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 551,
+          "refAa": "G",
+          "varAa": "D",
+          "label": "G551D",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "nonpolar",
+            "toClass": "negative",
+            "chargeChange": -1,
+            "hydropathyChange": -3.1,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.93
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "egfr-l858r",
+    "protein": {
+      "name": "Epidermal growth factor receptor",
+      "gene": "EGFR",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P00533",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P00533",
+      "fullLength": 1210
+    },
+    "variant": {
+      "label": "L858R",
+      "position": 858,
+      "ref": "L",
+      "alt": "R",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P00533"
+    },
+    "structure": {
+      "pdbId": "2ITV",
+      "chain": "A",
+      "residueMap": {
+        "858": 858
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 1210,
+      "variantLength": 1210,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 858,
+          "refAa": "L",
+          "varAa": "R",
+          "label": "L858R",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "nonpolar",
+            "toClass": "positive",
+            "chargeChange": 1,
+            "hydropathyChange": -8.3,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.92
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "fgfr3-g380r",
+    "protein": {
+      "name": "Fibroblast growth factor receptor 3",
+      "gene": "FGFR3",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P22607",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P22607",
+      "fullLength": 806
+    },
+    "variant": {
+      "label": "G380R",
+      "position": 380,
+      "ref": "G",
+      "alt": "R",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P22607"
+    },
+    "structure": {
+      "pdbId": "4K33",
+      "chain": "A",
+      "residueMap": {
+        "380": 380
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 806,
+      "variantLength": 806,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 380,
+          "refAa": "G",
+          "varAa": "R",
+          "label": "G380R",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "nonpolar",
+            "toClass": "positive",
+            "chargeChange": 1,
+            "hydropathyChange": -4.1,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.88
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "hbb-e7v",
+    "protein": {
+      "name": "Hemoglobin subunit beta",
+      "gene": "HBB",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P68871",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P68871",
+      "fullLength": 147
+    },
+    "variant": {
+      "label": "E7V",
+      "position": 7,
+      "ref": "E",
+      "alt": "V",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P68871",
+      "legacyLabel": "E6V",
+      "numberingNote": "E6V is the mature protein numbering. E7V is the UniProt position."
+    },
+    "structure": {
+      "pdbId": "2HBS",
+      "chain": "A",
+      "residueMap": {
+        "7": 6
+      },
+      "mappingVerified": true,
+      "mappingSource": "PDBe SIFTS",
+      "mappingCheckedOn": "2026-10-25",
+      "rcsbUrl": "https://www.rcsb.org/structure/2HBS"
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 147,
+      "variantLength": 147,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 7,
+          "refAa": "E",
+          "varAa": "V",
+          "label": "E7V",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "negative",
+            "toClass": "nonpolar",
+            "chargeChange": 1,
+            "hydropathyChange": 7.7,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.32
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "hras-g12v",
+    "protein": {
+      "name": "GTPase HRas",
+      "gene": "HRAS",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P01112",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P01112",
+      "fullLength": 189
+    },
+    "variant": {
+      "label": "G12V",
+      "position": 12,
+      "ref": "G",
+      "alt": "V",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P01112"
+    },
+    "structure": {
+      "pdbId": "2Q21",
+      "chain": "A",
+      "residueMap": {
+        "12": 12
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 189,
+      "variantLength": 189,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 12,
+          "refAa": "G",
+          "varAa": "V",
+          "label": "G12V",
+          "properties": {
+            "classChanged": false,
+            "fromClass": "nonpolar",
+            "toClass": "nonpolar",
+            "chargeChange": 0,
+            "hydropathyChange": 4.6,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.47
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "idh1-r132h",
+    "protein": {
+      "name": "Isocitrate dehydrogenase [NADP] cytoplasmic",
+      "gene": "IDH1",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "O75874",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/O75874",
+      "fullLength": 414
+    },
+    "variant": {
+      "label": "R132H",
+      "position": 132,
+      "ref": "R",
+      "alt": "H",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/O75874"
+    },
+    "structure": {
+      "pdbId": "3INW",
+      "chain": "A",
+      "residueMap": {
+        "132": 132
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 414,
+      "variantLength": 414,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 132,
+          "refAa": "R",
+          "varAa": "H",
+          "label": "R132H",
+          "properties": {
+            "classChanged": false,
+            "fromClass": "positive",
+            "toClass": "positive",
+            "chargeChange": -1,
+            "hydropathyChange": 1.3,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.76
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "jak2-v617f",
+    "protein": {
+      "name": "Tyrosine-protein kinase JAK2",
+      "gene": "JAK2",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "O60674",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/O60674",
+      "fullLength": 1132
+    },
+    "variant": {
+      "label": "V617F",
+      "position": 617,
+      "ref": "V",
+      "alt": "F",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/O60674"
+    },
+    "structure": {
+      "pdbId": "3KRR",
+      "chain": "A",
+      "residueMap": {
+        "617": 617
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 1132,
+      "variantLength": 1132,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 617,
+          "refAa": "V",
+          "varAa": "F",
+          "label": "V617F",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "nonpolar",
+            "toClass": "aromatic",
+            "chargeChange": 0,
+            "hydropathyChange": -1.4,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.91
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "kras-g12d",
+    "protein": {
+      "name": "GTPase KRas",
+      "gene": "KRAS",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P01116",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P01116",
+      "fullLength": 189
+    },
+    "variant": {
+      "label": "G12D",
+      "position": 12,
+      "ref": "G",
+      "alt": "D",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P01116"
+    },
+    "structure": {
+      "pdbId": "4DSO",
+      "chain": "A",
+      "residueMap": {
+        "12": 12
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 189,
+      "variantLength": 189,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 12,
+          "refAa": "G",
+          "varAa": "D",
+          "label": "G12D",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "nonpolar",
+            "toClass": "negative",
+            "chargeChange": -1,
+            "hydropathyChange": -3.1,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.47
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "nras-q61r",
+    "protein": {
+      "name": "GTPase NRas",
+      "gene": "NRAS",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P01111",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P01111",
+      "fullLength": 189
+    },
+    "variant": {
+      "label": "Q61R",
+      "position": 61,
+      "ref": "Q",
+      "alt": "R",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P01111"
+    },
+    "structure": {
+      "pdbId": "6ZIZ",
+      "chain": "A",
+      "residueMap": {
+        "61": 61
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 189,
+      "variantLength": 189,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 61,
+          "refAa": "Q",
+          "varAa": "R",
+          "label": "Q61R",
+          "properties": {
+            "classChanged": true,
+            "fromClass": "polar",
+            "toClass": "positive",
+            "chargeChange": 1,
+            "hydropathyChange": -1,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.47
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "pik3ca-h1047r",
+    "protein": {
+      "name": "Phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform",
+      "gene": "PIK3CA",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P42336",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P42336",
+      "fullLength": 1068
+    },
+    "variant": {
+      "label": "H1047R",
+      "position": 1047,
+      "ref": "H",
+      "alt": "R",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P42336"
+    },
+    "structure": {
+      "pdbId": "3HHM",
+      "chain": "A",
+      "residueMap": {
+        "1047": 1047
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 1068,
+      "variantLength": 1068,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 1047,
+          "refAa": "H",
+          "varAa": "R",
+          "label": "H1047R",
+          "properties": {
+            "classChanged": false,
+            "fromClass": "positive",
+            "toClass": "positive",
+            "chargeChange": 1,
+            "hydropathyChange": -1.3,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.91
+      },
+      "source": "calculated"
+    }
+  },
+  {
+    "id": "tp53-r175h",
+    "protein": {
+      "name": "Cellular tumor antigen p53",
+      "gene": "TP53",
+      "organism": "Homo sapiens",
+      "uniprotAccession": "P04637",
+      "uniprotUrl": "https://www.uniprot.org/uniprotkb/P04637",
+      "fullLength": 393
+    },
+    "variant": {
+      "label": "R175H",
+      "position": 175,
+      "ref": "R",
+      "alt": "H",
+      "sourceUrl": "https://www.uniprot.org/uniprotkb/P04637"
+    },
+    "structure": {
+      "pdbId": "1UOL",
+      "chain": "A",
+      "residueMap": {
+        "175": 175
+      },
+      "mappingVerified": true
+    },
+    "analysis": {
+      "method": "positional",
+      "referenceLength": 393,
+      "variantLength": 393,
+      "identical": false,
+      "substitutions": [
+        {
+          "position": 175,
+          "refAa": "R",
+          "varAa": "H",
+          "label": "R175H",
+          "properties": {
+            "classChanged": false,
+            "fromClass": "positive",
+            "toClass": "positive",
+            "chargeChange": -1,
+            "hydropathyChange": 1.3,
+            "source": "calculated",
+            "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+          }
+        }
+      ],
+      "insertions": [],
+      "deletions": [],
+      "summary": {
+        "substitutionCount": 1,
+        "insertionCount": 0,
+        "deletionCount": 0,
+        "identityPercent": 99.75
+      },
+      "source": "calculated"
+    }
+  }
+]

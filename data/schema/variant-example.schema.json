@@ -31,7 +31,9 @@
         "ref": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]$" },
         "alt": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]$" },
         "variantSequence": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$" },
-        "sourceUrl": { "type": "string", "format": "uri" }
+        "sourceUrl": { "type": "string", "format": "uri" },
+        "legacyLabel": { "type": "string" },
+        "numberingNote": { "type": "string" }
       }
     },
     "structure": {
@@ -47,7 +49,11 @@
           "propertyNames": { "pattern": "^[0-9]+$" },
           "additionalProperties": { "type": "integer" }
         },
-        "mappingVerified": { "type": "boolean" }
+        "mappingVerified": { "type": "boolean" },
+        "mappingSource": { "type": "string" },
+        "mappingCheckedOn": { "type": "string" },
+        "rcsbUrl": { "type": "string", "format": "uri" },
+        "notes": { "type": "string" }
       },
       "if": { "properties": { "mappingVerified": { "const": true } } },
       "then": {

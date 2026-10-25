@@ -1,0 +1,60 @@
+{
+  "id": "hras-g12v",
+  "protein": {
+    "name": "GTPase HRas",
+    "gene": "HRAS",
+    "organism": "Homo sapiens",
+    "uniprotAccession": "P01112",
+    "uniprotUrl": "https://www.uniprot.org/uniprotkb/P01112",
+    "fullLength": 189,
+    "referenceSequence": "MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLAARTVESRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS"
+  },
+  "variant": {
+    "label": "G12V",
+    "position": 12,
+    "ref": "G",
+    "alt": "V",
+    "variantSequence": "MTEYKLVVVGAVGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLAARTVESRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMSCKCVLS",
+    "sourceUrl": "https://www.uniprot.org/uniprotkb/P01112"
+  },
+  "structure": {
+    "pdbId": "2Q21",
+    "chain": "A",
+    "residueMap": {
+      "12": 12
+    },
+    "mappingVerified": true
+  },
+  "analysis": {
+    "method": "positional",
+    "referenceLength": 189,
+    "variantLength": 189,
+    "identical": false,
+    "substitutions": [
+      {
+        "position": 12,
+        "refAa": "G",
+        "varAa": "V",
+        "label": "G12V",
+        "properties": {
+          "classChanged": false,
+          "fromClass": "nonpolar",
+          "toClass": "nonpolar",
+          "chargeChange": 0,
+          "hydropathyChange": 4.6,
+          "source": "calculated",
+          "note": "Calculated from standard reference tables (Kyte-Doolittle hydropathy, approximate charge at pH 7). Not evidence of functional effect."
+        }
+      }
+    ],
+    "insertions": [],
+    "deletions": [],
+    "summary": {
+      "substitutionCount": 1,
+      "insertionCount": 0,
+      "deletionCount": 0,
+      "identityPercent": 99.47
+    },
+    "source": "calculated"
+  }
+}

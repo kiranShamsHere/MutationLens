@@ -1,113 +1,49 @@
-export const EXAMPLES = [
-    {
-        id: 'hbb-e7v',
-        gene: 'HBB',
+import raw from '../data/examples.json'
+
+// The example data lives in the data/examples folder (made by the analysis code,
+// mapping checked by the 3D and data work). `npm run sync-data` copies it here.
+export const CURATED = raw
+
+const META: Record<string, { field: string; blurb: string }> = {
+    'hbb-e7v': {
         field: 'Blood',
-        protein: 'Hemoglobin subunit beta',
-        accession: 'P68871',
-        variant: 'E7V',
         blurb: 'A classic textbook example. Older papers call it E6V because they skip the first methionine, which is why numbering matters.',
     },
-    {
-        id: 'kras-g12d',
-        gene: 'KRAS',
-        field: 'Cancer research',
-        protein: 'GTPase KRas',
-        accession: 'P01116',
-        variant: 'G12D',
-        blurb: 'One of the most studied changes in cancer research. It sits near the start of the protein.',
-    },
-    {
-        id: 'hras-g12v',
-        gene: 'HRAS',
-        field: 'Cancer research',
-        protein: 'GTPase HRas',
-        accession: 'P01112',
-        variant: 'G12V',
-        blurb: 'A classic change at position 12 in the RAS family, like the KRAS example.',
-    },
-    {
-        id: 'nras-q61r',
-        gene: 'NRAS',
-        field: 'Cancer research',
-        protein: 'GTPase NRas',
-        accession: 'P01111',
-        variant: 'Q61R',
-        blurb: 'A well studied change in NRAS, a close relative of KRAS.',
-    },
-    {
-        id: 'tp53-r175h',
-        gene: 'TP53',
-        field: 'Cancer research',
-        protein: 'Cellular tumor antigen p53',
-        accession: 'P04637',
-        variant: 'R175H',
-        blurb: 'A well known change in the part of p53 that binds DNA.',
-    },
-    {
-        id: 'braf-v600e',
-        gene: 'BRAF',
-        field: 'Cancer research',
-        protein: 'Serine/threonine protein kinase B-raf',
-        accession: 'P15056',
-        variant: 'V600E',
-        blurb: 'A well studied change in the kinase region of BRAF.',
-    },
-    {
-        id: 'egfr-l858r',
-        gene: 'EGFR',
-        field: 'Cancer research',
-        protein: 'Epidermal growth factor receptor',
-        accession: 'P00533',
-        variant: 'L858R',
-        blurb: 'A well studied change in the kinase region of EGFR, often discussed in lung cancer research.',
-    },
-    {
-        id: 'pik3ca-h1047r',
-        gene: 'PIK3CA',
-        field: 'Cancer research',
-        protein: 'PI3 kinase catalytic subunit alpha',
-        accession: 'P42336',
-        variant: 'H1047R',
-        blurb: 'A common change near the end of PIK3CA, widely studied in cancer research.',
-    },
-    {
-        id: 'idh1-r132h',
-        gene: 'IDH1',
-        field: 'Cancer research',
-        protein: 'Isocitrate dehydrogenase [NADP] cytoplasmic',
-        accession: 'O75874',
-        variant: 'R132H',
-        blurb: 'A well studied change in IDH1, often discussed in brain tumor research.',
-    },
-    {
-        id: 'jak2-v617f',
-        gene: 'JAK2',
-        field: 'Blood',
-        protein: 'Tyrosine protein kinase JAK2',
-        accession: 'O60674',
-        variant: 'V617F',
-        blurb: 'A well studied change in JAK2, often discussed in blood disorder research.',
-    },
-    {
-        id: 'fgfr3-g380r',
-        gene: 'FGFR3',
-        field: 'Growth and bone',
-        protein: 'Fibroblast growth factor receptor 3',
-        accession: 'P22607',
-        variant: 'G380R',
-        blurb: 'A well studied change in FGFR3, often discussed in bone growth research.',
-    },
-    {
-        id: 'cftr-g551d',
-        gene: 'CFTR',
-        field: 'Cystic fibrosis',
-        protein: 'Cystic fibrosis transmembrane conductance regulator',
-        accession: 'P13569',
-        variant: 'G551D',
-        blurb: 'A well known change in CFTR, often discussed in cystic fibrosis research.',
-    },
-]
+    'kras-g12d': { field: 'Cancer research', blurb: 'One of the most studied changes in cancer research. It sits near the start of the protein.' },
+    'hras-g12v': { field: 'Cancer research', blurb: 'A classic change at position 12 in the RAS family, like the KRAS example.' },
+    'nras-q61r': { field: 'Cancer research', blurb: 'A well studied change in NRAS, a close relative of KRAS.' },
+    'tp53-r175h': { field: 'Cancer research', blurb: 'A well known change in the part of p53 that binds DNA.' },
+    'braf-v600e': { field: 'Cancer research', blurb: 'A well studied change in the kinase region of BRAF.' },
+    'egfr-l858r': { field: 'Cancer research', blurb: 'A well studied change in the kinase region of EGFR, often discussed in lung cancer research.' },
+    'pik3ca-h1047r': { field: 'Cancer research', blurb: 'A common change near the end of PIK3CA, widely studied in cancer research.' },
+    'idh1-r132h': { field: 'Cancer research', blurb: 'A well studied change in IDH1, often discussed in brain tumor research.' },
+    'jak2-v617f': { field: 'Blood', blurb: 'A well studied change in JAK2, often discussed in blood disorder research.' },
+    'fgfr3-g380r': { field: 'Growth and bone', blurb: 'A well studied change in FGFR3, often discussed in bone growth research.' },
+    'cftr-g551d': { field: 'Cystic fibrosis', blurb: 'A well known change in CFTR, often discussed in cystic fibrosis research.' },
+}
+
+const ORDER = Object.keys(META)
+const rank = (id: string) => (ORDER.includes(id) ? ORDER.indexOf(id) : ORDER.length)
+
+export const EXAMPLES = [...CURATED]
+    .sort((a, b) => rank(a.id) - rank(b.id))
+    .map((c) => ({
+        id: c.id,
+        gene: c.protein.gene,
+        field: META[c.id]?.field ?? 'Other',
+        protein: c.protein.name,
+        accession: c.protein.uniprotAccession,
+        variant: c.variant.label,
+        blurb: META[c.id]?.blurb ?? 'A curated example from the team data.',
+        data: c,
+    }))
+
+export const findExample = (accession: string, variant: string) =>
+    CURATED.find(
+        (c) =>
+            c.protein.uniprotAccession.toUpperCase() === accession.trim().toUpperCase() &&
+            c.variant.label.toUpperCase() === variant.trim().toUpperCase(),
+    )
 
 export const exploreLink = (accession: string, variant: string) =>
     `/explore?acc=${accession}&v=${variant}`
