@@ -1,5 +1,6 @@
 import { AMINO_ACIDS } from './aminoAcids'
-import type { Feature, LoadedVariant } from '../types'
+import { parseChains } from './structure'
+import type { Feature, LoadedVariant, PdbEntry } from '../types'
 
 interface RawFeature {
     type?: string
@@ -19,6 +20,11 @@ interface RawEntry {
     }
     comments?: { commentType?: string; texts?: { value?: string }[] }[]
     features?: RawFeature[]
+    uniProtKBCrossReferences?: {
+        database?: string
+        id?: string
+        properties?: { key?: string; value?: string }[]
+    }[]
 }
 
 const SHOW = new Set([
@@ -95,6 +101,19 @@ export async function loadVariant(
         }
     }
 
+    const pdbEntries: PdbEntry[] = []
+    for (const x of d.uniProtKBCrossReferences ?? []) {
+        if (x.database !== 'PDB' || !x.id) continue
+        const prop = (k: string) => x.properties?.find((p) => p.key === k)?.value ?? ''
+        const resolution = parseFloat(prop('Resolution'))
+        pdbEntries.push({
+            id: x.id,
+            method: prop('Method'),
+            resolution: Number.isFinite(resolution) ? resolution : null,
+            chains: parseChains(prop('Chains')),
+        })
+    }
+
     return {
         accession: acc,
         name,
@@ -110,5 +129,6 @@ export async function loadVariant(
         summary: d.comments?.find((c) => c.commentType === 'FUNCTION')?.texts?.[0]?.value ?? '',
         features,
         listedInUniProt: listed,
+        pdbEntries,
     }
 }

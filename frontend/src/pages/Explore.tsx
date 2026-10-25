@@ -22,6 +22,7 @@ import { AMINO_ACIDS, signed } from '../lib/aminoAcids'
 import { EXAMPLES, exploreLink, findExample } from '../lib/examples'
 import { useVariant } from '../hooks/useVariant'
 import { useHistory } from '../hooks/useHistory'
+import { useAutoStructure } from '../hooks/useAutoStructure'
 import type { StructureInput } from '../types'
 
 export default function Explore() {
@@ -30,9 +31,10 @@ export default function Explore() {
     const v = params.get('v') ?? ''
     const curated = findExample(acc, v)
     const cs = curated?.structure
+    const residueMap = (cs?.residueMap ?? {}) as Record<string, number | undefined>
     const fromUrl = params.get('pdb')
-    // If the link has no structure but the team checked one for this variant, use it.
-    const structure: StructureInput = fromUrl
+    // Structure typed in the form, or the one the team checked for a curated example.
+    const manual: StructureInput = fromUrl
         ? {
             pdbId: fromUrl.toUpperCase(),
             chain: params.get('chain') ?? '',
@@ -43,11 +45,15 @@ export default function Explore() {
             ? {
                 pdbId: cs.pdbId,
                 chain: cs.chain,
-                residue: (cs.residueMap as Record<string, number | undefined>)[String(curated.variant.position)] ?? null,
+                residue: residueMap[String(curated.variant.position)] ?? null,
                 verified: true,
             }
             : { pdbId: '', chain: '', residue: null, verified: false }
     const { status, data, error, retry } = useVariant(acc, v)
+    // For every other protein, look up a structure automatically.
+    const needAuto = !manual.pdbId
+    const auto = useAutoStructure(status === 'ready' ? data : undefined, needAuto)
+    const structure: StructureInput = needAuto && auto.structure ? auto.structure : manual
     const { items, add, clear } = useHistory()
 
     useEffect(() => {
@@ -85,7 +91,7 @@ export default function Explore() {
             </PageHeader>
 
             <div className="mt-10">
-                <VariantForm key={params.toString()} acc={acc} v={v} structure={structure} onSubmit={submit} />
+                <VariantForm key={params.toString()} acc={acc} v={v} structure={manual} onSubmit={submit} />
                 <ProteinFinder onPick={pickProtein} />
             </div>
 
@@ -167,7 +173,7 @@ export default function Explore() {
                             </section>
 
                             <div className="md:col-span-4 md:row-span-2">
-                                <StructureViewer structure={structure} label={data.label} />
+                                <StructureViewer structure={structure} label={data.label} searching={needAuto && auto.searching} />
                             </div>
 
                             <Card title="Variant summary" tag={`Position ${data.position}`} className="md:col-span-2">
