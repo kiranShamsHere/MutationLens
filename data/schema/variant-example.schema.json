@@ -31,12 +31,15 @@
         "ref": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]$" },
         "alt": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]$" },
         "variantSequence": { "type": "string", "pattern": "^[ACDEFGHIKLMNPQRSTVWY]+$" },
-        "sourceUrl": { "type": "string", "format": "uri" }
+        "sourceUrl": { "type": "string", "format": "uri" },
+        "legacyLabel": { "type": "string" },
+        "numberingNote": { "type": "string" }
       }
     },
     "structure": {
       "type": "object",
       "required": ["pdbId", "chain", "residueMap", "mappingVerified"],
+      "additionalProperties": false,
       "properties": {
         "pdbId": { "type": ["string", "null"] },
         "chain": { "type": ["string", "null"] },
