@@ -4,7 +4,7 @@ import 'molstar/build/viewer/molstar.css'
 import Card from '../layout/Card'
 import type { StructureInput } from '../../types'
 
-type Props = { structure: StructureInput; label: string }
+type Props = { structure: StructureInput; label: string; searching?: boolean }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function focusResidue(plugin: any, chain: string, residue: number) {
@@ -27,15 +27,16 @@ async function focusResidue(plugin: any, chain: string, residue: number) {
     plugin.managers.camera.focusLoci(loci)
 }
 
-export default function StructureViewer({ structure, label }: Props) {
+export default function StructureViewer({ structure, label, searching = false }: Props) {
     const host = useRef<HTMLDivElement>(null)
     const [state, setState] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
-    const { pdbId, chain, residue, verified } = structure
-    const highlight = Boolean(pdbId && chain && residue && verified)
-    const activeState = !pdbId ? 'idle' : state
+    const { pdbId, chain, residue, verified, modelUrl, note } = structure
+    const hasModel = Boolean(pdbId || modelUrl)
+    const highlight = Boolean(hasModel && chain && residue && verified)
+    const activeState = !hasModel ? 'idle' : state
 
     useEffect(() => {
-        if (!pdbId) {
+        if (!pdbId && !modelUrl) {
             return
         }
         let disposed = false
@@ -64,7 +65,8 @@ export default function StructureViewer({ structure, label }: Props) {
                         return
                     }
                     viewer = v
-                    await v.loadPdb(pdbId)
+                    if (modelUrl) await v.loadStructureFromUrl(modelUrl, 'mmcif')
+                    else await v.loadPdb(pdbId)
                     if (highlight && residue) await focusResidue(v.plugin, chain, residue)
                     if (!disposed) setState('ready')
                 } catch (e) {
@@ -76,31 +78,33 @@ export default function StructureViewer({ structure, label }: Props) {
             disposed = true
             viewer?.plugin.dispose()
         }
-    }, [pdbId, chain, residue, highlight])
+    }, [pdbId, modelUrl, chain, residue, highlight])
 
     return (
-        <Card title="3D structure" tag={pdbId || 'No structure linked'} className="flex min-h-[420px] flex-col">
+        <Card title="3D structure" tag={pdbId || (modelUrl ? 'AlphaFold model' : searching ? 'Searching' : 'No structure linked')} className="flex min-h-[420px] flex-col">
             <div className="relative min-h-[320px] flex-1 overflow-hidden rounded-2xl bg-soft">
-                {!pdbId && (
+                {!hasModel && (
                     <div className="grid h-full place-items-center p-6 text-center">
                         <svg viewBox="0 0 400 300" className="absolute inset-0 h-full w-full opacity-60" aria-hidden="true">
                             <path d="M40 220C90 80 150 260 200 150S300 60 360 170" className="stroke-brand" strokeWidth="18" fill="none" strokeLinecap="round" />
                             <path d="M70 90C140 30 190 120 250 80S330 230 300 250" className="stroke-grape" strokeWidth="13" fill="none" strokeLinecap="round" />
                         </svg>
                         <p className="relative max-w-xs rounded-2xl bg-surface/90 p-4 text-sm font-semibold text-muted">
-                            Add a PDB id under Structure options to load the 3D viewer.
+                            {searching
+                                ? 'Looking for a 3D structure for this protein...'
+                                : 'No 3D structure was found for this spot. You can add a PDB ID under Structure options.'}
                         </p>
                     </div>
                 )}
-                {pdbId && <div ref={host} className="absolute inset-0" />}
+                {hasModel && <div ref={host} className="absolute inset-0" />}
                 {activeState === 'loading' && (
                     <div className="absolute inset-0 grid animate-pulse place-items-center bg-soft/80 text-sm font-semibold text-muted">
-                        Loading {pdbId}
+                        Loading {pdbId || 'AlphaFold model'}
                     </div>
                 )}
                 {activeState === 'error' && (
                     <div className="absolute inset-0 grid place-items-center bg-soft p-6 text-center text-sm font-semibold text-muted">
-                        Could not load {pdbId}. Check the id and try again.
+                        Could not load {pdbId || 'the AlphaFold model'}. Try again in a moment.
                     </div>
                 )}
                 <span className="absolute left-3 top-3 z-10 rounded-full bg-surface/90 px-3 py-1 font-mono text-xs font-semibold">
@@ -118,6 +122,7 @@ export default function StructureViewer({ structure, label }: Props) {
                         <TriangleAlert size={14} /> Mapping not verified, nothing is highlighted
                     </span>
                 )}
+                {note && <p className="mt-3 text-xs leading-relaxed text-muted">{note}</p>}
             </div>
         </Card>
     )
