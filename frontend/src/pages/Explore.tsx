@@ -13,12 +13,13 @@ import CopyLink from '../components/explore/CopyLink'
 import RecentList from '../components/explore/RecentList'
 import ExplainPanel from '../components/explore/ExplainPanel'
 import AnnotationsPanel from '../components/explore/AnnotationsPanel'
+import AnalysisPanel from '../components/explore/AnalysisPanel'
 import StructureViewer from '../components/viewer/StructureViewer'
 import SequenceCompare from '../components/sequence/SequenceCompare'
 import HydropathyChart from '../components/charts/HydropathyChart'
 import EvidencePanel from '../components/evidence/EvidencePanel'
 import { AMINO_ACIDS, signed } from '../lib/aminoAcids'
-import { EXAMPLES, exploreLink } from '../lib/examples'
+import { EXAMPLES, exploreLink, findExample } from '../lib/examples'
 import { useVariant } from '../hooks/useVariant'
 import { useHistory } from '../hooks/useHistory'
 import type { StructureInput } from '../types'
@@ -27,12 +28,25 @@ export default function Explore() {
     const [params, setParams] = useSearchParams()
     const acc = params.get('acc') ?? ''
     const v = params.get('v') ?? ''
-    const structure: StructureInput = {
-        pdbId: (params.get('pdb') ?? '').toUpperCase(),
-        chain: params.get('chain') ?? '',
-        residue: Number(params.get('res')) || null,
-        verified: params.get('ok') === '1',
-    }
+    const curated = findExample(acc, v)
+    const cs = curated?.structure
+    const fromUrl = params.get('pdb')
+    // If the link has no structure but the team checked one for this variant, use it.
+    const structure: StructureInput = fromUrl
+        ? {
+            pdbId: fromUrl.toUpperCase(),
+            chain: params.get('chain') ?? '',
+            residue: Number(params.get('res')) || null,
+            verified: params.get('ok') === '1',
+        }
+        : curated && cs?.mappingVerified && cs.pdbId && cs.chain
+            ? {
+                pdbId: cs.pdbId,
+                chain: cs.chain,
+                residue: (cs.residueMap as Record<string, number | undefined>)[String(curated.variant.position)] ?? null,
+                verified: true,
+            }
+            : { pdbId: '', chain: '', residue: null, verified: false }
     const { status, data, error, retry } = useVariant(acc, v)
     const { items, add, clear } = useHistory()
 
@@ -177,6 +191,8 @@ export default function Explore() {
                             </Card>
 
                             <ExplainPanel data={data} structureVerified={verified} />
+
+                            {curated && <AnalysisPanel curated={curated} />}
 
                             <SequenceCompare key={`${data.accession}${data.label}`} reference={data.reference} variant={data.variant} position={data.position} />
 

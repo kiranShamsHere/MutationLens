@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "sync-data": "node scripts/syncData.mjs",
+    "predev": "node scripts/syncData.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/syncData.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
