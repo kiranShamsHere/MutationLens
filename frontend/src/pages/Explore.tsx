@@ -19,8 +19,10 @@ import SequenceCompare from '../components/sequence/SequenceCompare'
 import HydropathyChart from '../components/charts/HydropathyChart'
 import EvidencePanel from '../components/evidence/EvidencePanel'
 import { AMINO_ACIDS, signed } from '../lib/aminoAcids'
-import { EXAMPLES, exploreLink, findExample } from '../lib/examples'
+import { EXAMPLES, exploreLink } from '../lib/examples'
+import { curatedStructure } from '../lib/structures'
 import { useVariant } from '../hooks/useVariant'
+import { useAlphaFold } from '../hooks/useAlphaFold'
 import { useHistory } from '../hooks/useHistory'
 import { useAutoStructure } from '../hooks/useAutoStructure'
 import type { StructureInput } from '../types'
@@ -29,31 +31,16 @@ export default function Explore() {
     const [params, setParams] = useSearchParams()
     const acc = params.get('acc') ?? ''
     const v = params.get('v') ?? ''
-    const curated = findExample(acc, v)
-    const cs = curated?.structure
-    const residueMap = (cs?.residueMap ?? {}) as Record<string, number | undefined>
-    const fromUrl = params.get('pdb')
-    // Structure typed in the form, or the one the team checked for a curated example.
-    const manual: StructureInput = fromUrl
-        ? {
-            pdbId: fromUrl.toUpperCase(),
-            chain: params.get('chain') ?? '',
-            residue: Number(params.get('res')) || null,
-            verified: params.get('ok') === '1',
-        }
-        : curated && cs?.mappingVerified && cs.pdbId && cs.chain
-            ? {
-                pdbId: cs.pdbId,
-                chain: cs.chain,
-                residue: residueMap[String(curated.variant.position)] ?? null,
-                verified: true,
-            }
-            : { pdbId: '', chain: '', residue: null, verified: false }
+    const urlStructure: StructureInput = {
+        pdbId: (params.get('pdb') ?? '').toUpperCase(),
+        chain: params.get('chain') ?? '',
+        residue: Number(params.get('res')) || null,
+        verified: params.get('ok') === '1',
+    }
+    const baseStructure: StructureInput = urlStructure.pdbId ? urlStructure : (curatedStructure(acc, v) ?? urlStructure)
     const { status, data, error, retry } = useVariant(acc, v)
-    // For every other protein, look up a structure automatically.
-    const needAuto = !manual.pdbId
-    const auto = useAutoStructure(status === 'ready' ? data : undefined, needAuto)
-    const structure: StructureInput = needAuto && auto.structure ? auto.structure : manual
+    const predicted = useAlphaFold(data, !baseStructure.pdbId)
+    const structure: StructureInput = baseStructure.pdbId ? baseStructure : (predicted ?? baseStructure)
     const { items, add, clear } = useHistory()
 
     useEffect(() => {
@@ -91,7 +78,7 @@ export default function Explore() {
             </PageHeader>
 
             <div className="mt-10">
-                <VariantForm key={params.toString()} acc={acc} v={v} structure={manual} onSubmit={submit} />
+                <VariantForm key={params.toString()} acc={acc} v={v} structure={urlStructure} onSubmit={submit} />
                 <ProteinFinder onPick={pickProtein} />
             </div>
 

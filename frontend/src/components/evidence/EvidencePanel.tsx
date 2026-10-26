@@ -8,7 +8,9 @@ export default function EvidencePanel({ data, structure }: Props) {
     const items = [
         { label: `UniProt ${data.accession}`, hint: 'Sequence record', href: `https://www.uniprot.org/uniprotkb/${data.accession}` },
         ...(structure.pdbId
-            ? [{ label: `PDB ${structure.pdbId}`, hint: 'Structure record', href: `https://www.rcsb.org/structure/${structure.pdbId}` }]
+            ? [structure.kind === 'predicted'
+                ? { label: `AlphaFold ${structure.pdbId}`, hint: 'Predicted model, not an experiment', href: `https://alphafold.ebi.ac.uk/entry/${data.accession}` }
+                : { label: `PDB ${structure.pdbId}`, hint: 'Structure record', href: `https://www.rcsb.org/structure/${structure.pdbId}` }]
             : []),
     ]
 

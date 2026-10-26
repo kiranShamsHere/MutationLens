@@ -31,7 +31,7 @@ ${notes}
 
 ## Structure
 ${s.pdbId
-            ? `- PDB ${s.pdbId}, chain ${s.chain || 'not set'}, structure residue ${s.residue ?? 'not set'}
+            ? `- ${s.kind === 'predicted' ? 'AlphaFold model' : 'PDB'} ${s.pdbId}, chain ${s.chain || 'not set'}, structure residue ${s.residue ?? 'not set'}
 - Mapping confirmed by the user: ${canHighlight(s) ? 'yes' : 'no'}`
             : '- No structure linked'
         }

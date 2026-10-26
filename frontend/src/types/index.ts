@@ -35,6 +35,8 @@ export interface StructureInput {
     chain: string
     residue: number | null
     verified: boolean
+    source?: string
+    kind?: 'experimental' | 'predicted'
     modelUrl?: string
     note?: string
 }
