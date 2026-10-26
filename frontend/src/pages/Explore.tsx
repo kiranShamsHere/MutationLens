@@ -13,6 +13,7 @@ import CopyLink from '../components/explore/CopyLink'
 import RecentList from '../components/explore/RecentList'
 import ExplainPanel from '../components/explore/ExplainPanel'
 import AnnotationsPanel from '../components/explore/AnnotationsPanel'
+import AnalysisPanel from '../components/explore/AnalysisPanel'
 import StructureViewer from '../components/viewer/StructureViewer'
 import SequenceCompare from '../components/sequence/SequenceCompare'
 import HydropathyChart from '../components/charts/HydropathyChart'
@@ -23,6 +24,7 @@ import { curatedStructure } from '../lib/structures'
 import { useVariant } from '../hooks/useVariant'
 import { useAlphaFold } from '../hooks/useAlphaFold'
 import { useHistory } from '../hooks/useHistory'
+import { useAutoStructure } from '../hooks/useAutoStructure'
 import type { StructureInput } from '../types'
 
 export default function Explore() {
@@ -158,7 +160,7 @@ export default function Explore() {
                             </section>
 
                             <div className="md:col-span-4 md:row-span-2">
-                                <StructureViewer structure={structure} label={data.label} />
+                                <StructureViewer structure={structure} label={data.label} searching={needAuto && auto.searching} />
                             </div>
 
                             <Card title="Variant summary" tag={`Position ${data.position}`} className="md:col-span-2">
@@ -182,6 +184,8 @@ export default function Explore() {
                             </Card>
 
                             <ExplainPanel data={data} structureVerified={verified} />
+
+                            {curated && <AnalysisPanel curated={curated} />}
 
                             <SequenceCompare key={`${data.accession}${data.label}`} reference={data.reference} variant={data.variant} position={data.position} />
 

@@ -1,5 +1,7 @@
-import { AMINO_ACIDS, signed } from './aminoAcids'
+import { AMINO_ACIDS, signed, signedInt } from './aminoAcids'
 import type { LoadedVariant } from '../types'
+
+const chargeWord = (c: number) => (c < 0 ? 'negative' : c > 0 ? 'positive' : 'neutral')
 
 export function explain(data: LoadedVariant, structureVerified: boolean) {
     const r = AMINO_ACIDS[data.ref]
@@ -19,6 +21,9 @@ export function explain(data: LoadedVariant, structureVerified: boolean) {
         r.group === a.group
             ? `Both are ${r.group.toLowerCase()} building blocks, so the type of chemistry stays the same.`
             : `The type of building block changes from ${r.group.toLowerCase()} to ${a.group.toLowerCase()}.`,
+        ...(r.charge !== a.charge
+            ? [`The charge at this spot changes from ${chargeWord(r.charge)} to ${chargeWord(a.charge)} (a rough value at pH 7).`]
+            : []),
         water,
         'This only describes the two amino acids. It cannot tell you what happens inside a real cell. Check the UniProt notes below for evidence.',
     ]
@@ -27,6 +32,7 @@ export function explain(data: LoadedVariant, structureVerified: boolean) {
         ['Reference residue', `${r.name} (${data.ref})`],
         ['Variant residue', `${a.name} (${data.alt})`],
         ['Group change', `${r.group} to ${a.group}`],
+        ['Approximate charge at pH 7', `${signedInt(r.charge)} to ${signedInt(a.charge)}`],
         ['Hydropathy (Kyte and Doolittle)', `${signed(r.kd)} to ${signed(a.kd)}, change ${signed(delta)}`],
         ['Position in UniProt record', `${data.position} of ${data.length}`],
         ['Listed as natural variant in UniProt', data.listedInUniProt ? 'Yes' : 'Not found in this entry'],
