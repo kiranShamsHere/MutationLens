@@ -17,16 +17,22 @@ export function explain(data: LoadedVariant, structureVerified: boolean) {
                 : `The new one likes water more than the old one. That is ${size} change.`
 
     const simple = [
-        `At spot ${data.position}, ${r.name} (${data.ref}) is swapped for ${a.name} (${data.alt}).`,
-        r.group === a.group
-            ? `Both are ${r.group.toLowerCase()} building blocks, so the type of chemistry stays the same.`
-            : `The type of building block changes from ${r.group.toLowerCase()} to ${a.group.toLowerCase()}.`,
+        { title: 'What changed', text: `At spot ${data.position}, ${r.name} (${data.ref}) is swapped for ${a.name} (${data.alt}).` },
+        {
+            title: 'Type of building block',
+            text:
+                r.group === a.group
+                    ? `Both are ${r.group.toLowerCase()} building blocks, so the type of chemistry stays the same.`
+                    : `It changes from ${r.group.toLowerCase()} to ${a.group.toLowerCase()}.`,
+        },
         ...(r.charge !== a.charge
-            ? [`The charge at this spot changes from ${chargeWord(r.charge)} to ${chargeWord(a.charge)} (a rough value at pH 7).`]
+            ? [{ title: 'Charge', text: `It goes from ${chargeWord(r.charge)} to ${chargeWord(a.charge)} (a rough value at pH 7).` }]
             : []),
-        water,
-        'This only describes the two amino acids. It cannot tell you what happens inside a real cell. Check the UniProt notes below for evidence.',
+        { title: 'Water', text: water },
     ]
+
+    const note =
+        'This only describes the two amino acids. It cannot tell you what happens inside a real cell. Check the UniProt notes below for evidence.'
 
     const technical: [string, string][] = [
         ['Reference residue', `${r.name} (${data.ref})`],
@@ -39,5 +45,5 @@ export function explain(data: LoadedVariant, structureVerified: boolean) {
         ['3D mapping', structureVerified ? 'Confirmed' : 'Not confirmed'],
     ]
 
-    return { simple, technical }
+    return { simple, note, technical }
 }
