@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Info } from 'lucide-react'
 import Card from '../layout/Card'
 import { explain } from '../../lib/explain'
 import type { LoadedVariant } from '../../types'
@@ -7,7 +8,7 @@ type Props = { data: LoadedVariant; structureVerified: boolean }
 
 export default function ExplainPanel({ data, structureVerified }: Props) {
     const [mode, setMode] = useState<'simple' | 'technical'>('simple')
-    const { simple, technical } = explain(data, structureVerified)
+    const { simple, note, technical } = explain(data, structureVerified)
 
     const tab = (m: 'simple' | 'technical') =>
         `rounded-lg px-5 py-2 text-sm font-bold transition duration-200 ${mode === m ? 'bg-ink text-bg shadow' : 'text-muted hover:text-ink'
@@ -25,14 +26,19 @@ export default function ExplainPanel({ data, structureVerified }: Props) {
             </div>
 
             {mode === 'simple' ? (
-                <ul className="space-y-3">
-                    {simple.map((line) => (
-                        <li key={line} className="flex items-start gap-3 text-[15px] leading-relaxed">
-                            <i className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand" />
-                            {line}
-                        </li>
-                    ))}
-                </ul>
+                <>
+                    <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3">
+                        {simple.map((s) => (
+                            <div key={s.title} className="rounded-2xl bg-soft px-5 py-5 transition duration-200 hover:bg-line">
+                                <p className="text-xs font-bold uppercase tracking-widest text-muted">{s.title}</p>
+                                <p className="mt-3 text-[15px] leading-relaxed">{s.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <p className="mt-4 flex items-start gap-3 rounded-2xl border border-line px-5 py-4 text-sm leading-relaxed text-muted">
+                        <Info size={16} className="mt-0.5 shrink-0" /> {note}
+                    </p>
+                </>
             ) : (
                 <dl className="grid gap-3 sm:grid-cols-2">
                     {technical.map(([k, v]) => (

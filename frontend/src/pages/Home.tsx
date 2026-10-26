@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowRight, Box, FileDown, Layers, Link2, Search } from 'lucide-react'
 import Container from '../components/layout/Container'
+import ScrollRow, { chipClass } from '../components/layout/ScrollRow'
 import { EXAMPLES, exploreLink } from '../lib/examples'
 
 const features = [
@@ -11,9 +12,9 @@ const features = [
 ]
 
 const steps = [
-    ['01', 'Enter a change', 'A UniProt ID and a change like E7V.'],
-    ['02', 'We check it', 'We read the real sequence and make sure the old letter is correct.'],
-    ['03', 'Learn and export', 'Read what it means, look at the notes, then download your report.'],
+    ['01', 'Search a protein', 'Type a name, a gene or a UniProt ID.'],
+    ['02', 'Pick a change', 'Choose one UniProt lists, or type your own like E7V. We check the old letter.'],
+    ['03', 'Read the result', 'See what it means, view it in 3D, check the sources, then download a report.'],
 ]
 
 const audience = [
@@ -42,24 +43,26 @@ export default function Home() {
                         onSubmit={(e) => {
                             e.preventDefault()
                             const f = new FormData(e.currentTarget)
-                            navigate(exploreLink(String(f.get('acc')).trim().toUpperCase(), String(f.get('v')).trim().toUpperCase()))
+                            navigate(`/explore?q=${encodeURIComponent(String(f.get('q')).trim())}`)
                         }}
                         className="mt-7 flex flex-col gap-2.5 rounded-3xl border border-line bg-surface p-2.5 shadow-lg transition duration-300 focus-within:border-brand sm:mt-9 sm:flex-row sm:gap-3 sm:p-3"
                     >
-                        <input name="acc" required placeholder="UniProt ID, P68871" aria-label="UniProt ID" className="min-w-0 flex-1 rounded-xl bg-bg px-4 py-3.5 text-sm font-semibold outline-none placeholder:font-normal placeholder:text-muted" />
-                        <input name="v" required placeholder="Change, E7V" aria-label="Change" className="min-w-0 flex-1 rounded-xl bg-bg px-4 py-3.5 text-sm font-semibold outline-none placeholder:font-normal placeholder:text-muted" />
+                        <input name="q" required minLength={2} placeholder="Search a protein, like hemoglobin or KRAS" aria-label="Search a protein" className="min-w-0 flex-1 rounded-xl bg-bg px-4 py-3.5 text-sm font-semibold outline-none placeholder:font-normal placeholder:text-muted" />
                         <button className="flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3.5 text-sm font-bold text-brand-ink transition duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0">
-                            <Search size={16} /> Analyze
+                            <Search size={16} /> Search
                         </button>
                     </form>
+                    <p className="mt-3 text-sm text-muted">Type a name, a gene or a UniProt ID. You do not need to know any ID.</p>
 
-                    <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
-                        <span className="text-muted">Try:</span>
-                        {EXAMPLES.slice(0, 4).map((e) => (
-                            <Link key={e.id} to={exploreLink(e.accession, e.variant)} className="rounded-full border border-line px-3.5 py-2 font-bold transition duration-200 hover:-translate-y-0.5 hover:border-brand hover:bg-surface">
-                                {e.gene} {e.variant}
-                            </Link>
-                        ))}
+                    <div className="mt-5">
+                        <p className="mb-2 text-sm text-muted">Or try an example:</p>
+                        <ScrollRow>
+                            {EXAMPLES.slice(0, 6).map((e) => (
+                                <Link key={e.id} to={exploreLink(e.accession, e.variant)} className={chipClass}>
+                                    {e.gene} {e.variant}
+                                </Link>
+                            ))}
+                        </ScrollRow>
                     </div>
                 </div>
 

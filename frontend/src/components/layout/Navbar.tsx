@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Database, GraduationCap, House, Info, LayoutGrid, Menu, Microscope, X } from 'lucide-react'
+import { ArrowLeftRight, Database, GraduationCap, House, Info, LayoutGrid, Menu, Microscope, X } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Container from './Container'
 import Logo from './Logo'
@@ -10,6 +10,7 @@ const links: { to: string; label: string; icon: LucideIcon; end?: boolean }[] = 
     { to: '/', label: 'Home', icon: House, end: true },
     { to: '/explore', label: 'Explore', icon: Microscope },
     { to: '/examples', label: 'Examples', icon: LayoutGrid },
+    { to: '/compare', label: 'Compare', icon: ArrowLeftRight },
     { to: '/learn', label: 'Learn', icon: GraduationCap },
     { to: '/sources', label: 'Sources', icon: Database },
     { to: '/about', label: 'About', icon: Info },

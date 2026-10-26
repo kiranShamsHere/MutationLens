@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight, Plus, Search } from 'lucide-react'
 import Container from '../components/layout/Container'
 import PageHeader from '../components/layout/PageHeader'
+import ScrollRow, { chipClass } from '../components/layout/ScrollRow'
 import { EXAMPLES, exploreLink } from '../lib/examples'
 
 const fields = ['All', ...Array.from(new Set(EXAMPLES.map((e) => e.field)))]
@@ -34,19 +35,18 @@ export default function Examples() {
                 />
             </label>
 
-            <div className="mt-4 flex flex-wrap gap-2">
+            <ScrollRow className="mt-4">
                 {fields.map((f) => (
                     <button
                         key={f}
                         aria-pressed={field === f}
                         onClick={() => setField(f)}
-                        className={`rounded-full border px-4 py-2 text-sm font-bold transition duration-200 ${field === f ? 'border-ink bg-ink text-bg' : 'border-line text-muted hover:border-brand hover:text-ink'
-                            }`}
+                        className={`${chipClass} ${field === f ? 'border-ink bg-ink text-bg' : 'text-muted hover:text-ink'}`}
                     >
                         {f}
                     </button>
                 ))}
-            </div>
+            </ScrollRow>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {list.map((e) => (
@@ -77,7 +77,7 @@ export default function Examples() {
                         <Plus size={22} />
                     </span>
                     <span className="mt-4 font-extrabold">Try your own</span>
-                    <span className="mt-1 text-sm text-muted">Any UniProt ID and change</span>
+                    <span className="mt-1 text-sm text-muted">Search any protein by name</span>
                 </Link>
             </div>
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { exploreLink } from '../../lib/examples'
+import ScrollRow, { chipClass } from '../layout/ScrollRow'
 import type { HistoryItem } from '../../hooks/useHistory'
 
 type Props = { items: HistoryItem[]; onClear: () => void }
@@ -14,18 +15,13 @@ export default function RecentList({ items, onClear }: Props) {
                     Clear
                 </button>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <ScrollRow>
                 {items.map((i) => (
-                    <Link
-                        key={`${i.acc}${i.v}`}
-                        to={exploreLink(i.acc, i.v)}
-                        title={i.name}
-                        className="rounded-full border border-line bg-soft px-4 py-2 text-sm font-bold transition duration-200 hover:-translate-y-0.5 hover:border-brand hover:shadow-md"
-                    >
+                    <Link key={`${i.acc}${i.v}`} to={exploreLink(i.acc, i.v)} title={i.name} className={`${chipClass} bg-soft`}>
                         {i.gene || i.acc} {i.v}
                     </Link>
                 ))}
-            </div>
+            </ScrollRow>
             <p className="mt-3 text-xs text-muted">Saved on this device only.</p>
         </div>
     )
