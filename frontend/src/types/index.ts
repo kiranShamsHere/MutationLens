@@ -12,6 +12,23 @@ export interface PdbEntry {
     chains: { chain: string; start: number; end: number }[]
 }
 
+export interface ProteinSection {
+    title: string
+    paragraphs: string[]
+}
+
+export interface ProteinInfo {
+    accession: string
+    name: string
+    gene: string
+    synonyms: string[]
+    organism: string
+    length: number
+    massKDa: number | null
+    intro: string
+    sections: ProteinSection[]
+}
+
 export interface LoadedVariant {
     accession: string
     name: string
@@ -28,6 +45,7 @@ export interface LoadedVariant {
     features: Feature[]
     listedInUniProt: boolean
     pdbEntries: PdbEntry[]
+    info: ProteinInfo
 }
 
 export interface StructureInput {
